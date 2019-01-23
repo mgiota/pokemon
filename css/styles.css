@@ -59,7 +59,7 @@ h3 {
 
 /* Content */
 
-div {
+.content__item {
   margin: 50px auto;
   padding: 10px;
   text-align: center;
@@ -67,8 +67,12 @@ div {
   border-radius: 5px;
 }
 
+.highlight {
+  color: #FAFAFA;
+}
+
 @media all and (min-width: 700px) {
-  div {
+  .content__item {
     max-width: 700px;
   }
 
