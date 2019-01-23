@@ -1,0 +1,78 @@
+:root {
+  --primary-color: #E84855;
+  --primary-color-transparent: rgba(232, 72, 85, 0.8);
+  --secondary-color: #444A48;
+  --tertiary-color: #cdbcf2;
+  --text-color: #2b2b2b;
+  --font-size-basic: 16px;
+  --font-size-h1: 36px;
+  --font-size-h2: 30px;
+  --font-size-h3: 24px;
+  --font-weight-basic: 400;
+  --font-weight-headers: 700;
+  --line-height-basic: 1.6;
+}
+
+/* Basics */
+
+html {
+  background: url("../img/landscape.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: var(--font-weight-basic);
+  font-size: var(--font-size-basic);
+  line-height: var(--line-height-basic);
+  color: var(--text-color);
+  padding: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-headers);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-headers);
+}
+
+h3 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-headers);
+}
+
+/* Header */
+
+.page-header {
+  text-align: center;
+}
+.page-header__item {
+  color: #FAFAFA;
+}
+
+/* Content */
+
+div {
+  margin: 50px auto;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--primary-color-transparent);
+  border-radius: 5px;
+}
+
+@media all and (min-width: 700px) {
+  div {
+    max-width: 700px;
+  }
+
+  body {
+    padding: 0;
+  }
+}
