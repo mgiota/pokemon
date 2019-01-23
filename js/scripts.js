@@ -19,12 +19,12 @@ var repository = [
   }
 ];
 
-var highlight = '<span>(I am Lukes father!)</span>'
+var highlight = '<span class="highlight"> I am Lukes father!</span>'
 
 for (var i = 0; i < repository.length; i++) {
   if (repository[i].name === 'Darth Vader') {
-    document.write('<div><p>Name: ' + repository[i].name + highlight + '</p><p>Height: ' + repository[i].height + '</p></div>');
+    document.write('<div class="content__item"><p>Name: ' + repository[i].name + highlight + '</p><p>Height: ' + repository[i].height + '</p></div>');
   } else {
-    document.write('<div><p>Name: ' + repository[i].name + '</p><p>Height: ' + repository[i].height + '</p></div>');
+    document.write('<div class="content__item"><p>Name: ' + repository[i].name + '</p><p>Height: ' + repository[i].height + '</p></div>');
   }
 };
