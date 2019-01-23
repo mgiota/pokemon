@@ -1,0 +1,66 @@
+/* Basics */
+
+html {
+  background: url("../img/landscape.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2b2b2b;
+  padding: 10px;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Header */
+
+.page-header {
+  text-align: center;
+}
+.page-header__item {
+  color: #FAFAFA;
+}
+
+/* Content */
+
+div {
+  margin: 50px auto;
+  padding: 10px;
+  text-align: center;
+  background-color: rgba(232, 72, 85, 0.8);
+  border-radius: 5px;
+}
+
+/* Media Queries */
+
+@media all and (min-width: 700px) {
+  div {
+    max-width: 700px;
+  }
+
+  body {
+    padding: 0;
+  }
+}
