@@ -1,7 +1,7 @@
 /* Basics */
 
 html {
-  background: url("../img/landscape.jpg") no-repeat center center fixed;
+  background: url("../img/landscape.jpg") no-repeat center right fixed;
   background-size: cover;
 }
 
@@ -66,5 +66,9 @@ h3 {
 
   body {
     padding: 0;
+  }
+
+  html {
+    background: url("../img/landscape.jpg") no-repeat center center fixed;
   }
 }
