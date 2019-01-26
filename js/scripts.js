@@ -19,6 +19,18 @@ var starwarsRepository = (function () {
       height: 202,
       mass: 136,
       gender: "male"
+    },
+    {
+      name: 'R2-D2',
+      height: 96,
+      mass: 32,
+      gender: "n/a"
+    },
+    {
+      name: 'Chewbacca',
+      height: 228,
+      mass: 112,
+      gender: "male"
     }
   ];
 // function to add characters
@@ -38,7 +50,7 @@ var starwarsRepository = (function () {
 
 // forEach() function
 
-starwarsRepository.getAll().forEach(function(character) {
+/*starwarsRepository.getAll().forEach(function(character) {
   var highlight = '<span class="highlight"> I am Lukes father!</span>'; // highlight for special character
 
   if (character.name === 'Darth Vader') { // selecting the special character
@@ -46,4 +58,4 @@ starwarsRepository.getAll().forEach(function(character) {
   } else { // output for the other characters
     document.write('<div class="content__item"><p>Name: ' + character.name + '</p><p>Height: ' + character.height + '</p></div>');
   }
-});
+});*/
