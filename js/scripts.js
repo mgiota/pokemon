@@ -21,11 +21,11 @@ var starwarsRepository = (function () {
       gender: "male"
     }
   ];
-
+// function to add characters
  function add(character) {
    characters.push(character);
  }
-
+// function to select characters
  function getAll() {
    return characters;
  }
@@ -39,11 +39,11 @@ var starwarsRepository = (function () {
 // forEach() function
 
 starwarsRepository.getAll().forEach(function(character) {
-  var highlight = '<span class="highlight"> I am Lukes father!</span>';
+  var highlight = '<span class="highlight"> I am Lukes father!</span>'; // highlight for special character
 
-  if (character.name === 'Darth Vader') {
+  if (character.name === 'Darth Vader') { // selecting the special character
     document.write('<div class="content__item"><p>Name: ' + character.name + highlight + '</p><p>Height: ' + character.height + '</p></div>');
-  } else {
+  } else { // output for the other characters
     document.write('<div class="content__item"><p>Name: ' + character.name + '</p><p>Height: ' + character.height + '</p></div>');
   }
 });
