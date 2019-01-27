@@ -79,6 +79,8 @@ h3 {
   background-color: var(--primary-color-transparent);
   border-radius: 5px;
   list-style: none;
+  display: flex;
+  justify-content: space-between;
 }
 
 .content__item--button {
