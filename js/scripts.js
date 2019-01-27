@@ -1,6 +1,7 @@
 // New Code using IIFE
 
 var starwarsRepository = (function () {
+// Array with Star Wars Characters as Objects
   var characters = [
     {
       name: 'Luke Skywalker',
@@ -41,21 +42,42 @@ var starwarsRepository = (function () {
  function getAll() {
    return characters;
  }
+// function to add List item to DOM
+  function addListItem(character) {
+    var $unorderedList = document.querySelector('ul');
+    // create necessary elements
+    var $newListElement = document.createElement('li');
+    var $newSpanElement = document.createElement('span');
+    var $newButtonElement = document.createElement('button');
+    // inner text for elements
+    $newButtonElement.innerText = '+';
+    $newSpanElement.innerText = character.name;
+    // add the classes
+    $newListElement.classList.add('content__item');
+    $newButtonElement.classList.add('content__item--button');
+    //append new elements
+    $unorderedList.appendChild($newListElement);
+    $newListElement.appendChild($newSpanElement);
+    $newListElement.appendChild($newButtonElement);
+    // add event listener
+    $newButtonElement.addEventListener('click', function (event) {
+      showDetails(character.name);
+    });
+  }
+  // function for showing the details of the characters
+  function showDetails(character) {
+    console.log(character);
+  }
 
  return {
    add: add,
-   getAll: getAll
+   getAll: getAll,
+   addListItem: addListItem,
+   showDetails: showDetails
  };
 })();
 
-// forEach() function
-
-/*starwarsRepository.getAll().forEach(function(character) {
-  var highlight = '<span class="highlight"> I am Lukes father!</span>'; // highlight for special character
-
-  if (character.name === 'Darth Vader') { // selecting the special character
-    document.write('<div class="content__item"><p>Name: ' + character.name + highlight + '</p><p>Height: ' + character.height + '</p></div>');
-  } else { // output for the other characters
-    document.write('<div class="content__item"><p>Name: ' + character.name + '</p><p>Height: ' + character.height + '</p></div>');
-  }
-});*/
+// forEach() function to create the elements for the DOM
+starwarsRepository.getAll().forEach(function(character) {
+  starwarsRepository.addListItem(character);
+});
