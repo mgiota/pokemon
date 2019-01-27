@@ -53,6 +53,13 @@ h3 {
   font-weight: var(--font-weight-headers);
 }
 
+hr {
+  max-width: 700px;
+  border: 0;
+  height: 2px;
+  background-image: linear-gradient(to right, rgba(107, 241, 120, 0), rgba(107, 241, 120, 0.75), rgba(107, 241, 120, 0));
+}
+
 /* Header */
 
 .page-header {
@@ -90,6 +97,10 @@ h3 {
   color: var(--tertiary-color);
 }
 
+button:focus {
+  outline: 0;
+}
+
 .highlight {
   color: var(--tertiary-color);
 }
@@ -98,6 +109,8 @@ h3 {
 
 .footer {
   text-align: center;
+  max-width: 700px;
+  margin: 50px auto;
 }
 
 .footer_item {
