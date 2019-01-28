@@ -88,6 +88,7 @@ hr {
   border-radius: 50%;
   background-color: transparent;
   color: #FAFAFA;
+  cursor: url("../img/light_saber_green.png"), auto;
 }
 
 button:focus {
