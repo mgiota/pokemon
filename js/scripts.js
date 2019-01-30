@@ -2,45 +2,16 @@
 
 var starwarsRepository = (function () {
 // Array with Star Wars Characters as Objects
-  var characters = [
-    {
-      name: 'Luke Skywalker',
-      height: 172,
-      mass: 77,
-      gender: "male"
-    },
-    {
-      name: 'C-3PO',
-      height: 167,
-      mass: 75,
-      gender: "n/a"
-    },
-    {
-      name: 'Darth Vader',
-      height: 202,
-      mass: 136,
-      gender: "male"
-    },
-    {
-      name: 'R2-D2',
-      height: 96,
-      mass: 32,
-      gender: "n/a"
-    },
-    {
-      name: 'Chewbacca',
-      height: 228,
-      mass: 112,
-      gender: "male"
-    }
-  ];
+  var characters = [];
+// API URL
+  var apiURL = 'https://swapi.co/api/people/';
 // function to add characters
- function add(character) {
-   characters.push(character);
+  function add(character) {
+    characters.push(character);
  }
 // function to select characters
- function getAll() {
-   return characters;
+  function getAll() {
+    return characters;
  }
 // function to add List item to DOM
   function addListItem(character) {
@@ -65,19 +36,56 @@ var starwarsRepository = (function () {
     });
   }
   // function for showing the details of the characters
-  function showDetails(character) {
-    console.log(character);
+  function showDetails(item) {
+    starwarsRepository.loadDetails(item).then(function () {
+       console.log(item);
+    });
+  }
+  // loading the characters from API
+  function loadList() {
+    return fetch(apiURL).then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      json.results.forEach(function (item) {
+        var character = {
+         name: item.name,
+         detailsUrl: item.url
+        };
+        add(character);
+      });
+    }).catch(function (e) {
+      console.error(e);
+    })
+   }
+  //FUNCTION IS NOT READY!! CONTINUE HERE
+  function loadDetails(item) {
+    var url = item.detailsUrl;
+    return fetch(url).then(function (response) {
+        return response.json();
+    }).then(function (details) {
+        // Now add the details to the item
+        item.mass = details.mass;
+        item.height = details.height;
+        item.gender = details.gender;
+    }).catch(function (e) {
+        console.error(e);
+    });
   }
 
- return {
+  return {
    add: add,
    getAll: getAll,
    addListItem: addListItem,
-   showDetails: showDetails
+   showDetails: showDetails,
+   loadList: loadList,
+   loadDetails: loadDetails
  };
 })();
 
 // forEach() function to create the elements for the DOM
-starwarsRepository.getAll().forEach(function(character) {
-  starwarsRepository.addListItem(character);
+
+starwarsRepository.loadList().then(function() {
+  starwarsRepository.getAll().forEach(function(character) {
+    starwarsRepository.addListItem(character);
+  });
 });
