@@ -129,5 +129,6 @@ button:focus {
 
   html {
     background: url("../img/landscape.jpg") no-repeat center center fixed;
+    background-size: cover;
   }
 }
