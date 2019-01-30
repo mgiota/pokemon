@@ -11,6 +11,7 @@ var starwarsRepository = (function () {
  }
 // function to select characters
   function getAll() {
+    console.log(characters, '!!characters')
     return characters;
  }
 // function to add List item to DOM
@@ -41,13 +42,44 @@ var starwarsRepository = (function () {
        console.log(item);
     });
   }
+
+  function getStarWarsPlanets(progress, url = apiURL, planets = []) {
+    return new Promise((resolve, reject) => fetch(url)
+      .then(response => {
+        if (response.status !== 200) {
+          throw `${response.status}: ${response.statusText}`;
+        }
+        response.json().then(data => {
+          planets = planets.concat(data.results);
+          data.results.forEach(function (item) {
+            var character = {
+             name: item.name,
+             detailsUrl: item.url
+            };
+            add(character);
+            starwarsRepository.addListItem(character);
+
+          });
+
+          if (data.next) {
+            progress && progress(planets);
+            getStarWarsPlanets(progress, data.next, planets).then(resolve).catch(reject);
+          } else {
+            resolve(planets);
+          }
+        }).catch(reject);
+      }).catch(reject));
+  }
+
   // loading the characters from API
   function loadList(link = apiURL) {
     var currentURL = link;
 
     return fetch(currentURL).then(function (response) {
+      // console.log(response.json());
       return response.json();
     }).then(function (json) {
+      console.log(json)
       json.results.forEach(function (item) {
         var character = {
          name: item.name,
@@ -94,20 +126,40 @@ var starwarsRepository = (function () {
     });
   }
 
+  function progressCallback(planets) {
+    // render progress
+    console.log(`${planets.length} loaded`);
+
+  }
+
   return {
    add: add,
    getAll: getAll,
    addListItem: addListItem,
    showDetails: showDetails,
    loadList: loadList,
-   loadDetails: loadDetails
+   loadDetails: loadDetails,
+   getStarWarsPlanets: getStarWarsPlanets,
+   progressCallback: progressCallback
  };
 })();
 
 // forEach() function to create the elements for the DOM
-starwarsRepository.loadList().then(function() {
-  starwarsRepository.getAll().forEach(function(character) {
-    starwarsRepository.addListItem(character);
-  });
-  console.log(starwarsRepository.getAll().length) // checking the length of characters
-});
+// starwarsRepository.loadList().then(function() {
+//   starwarsRepository.getAll().forEach(function(character) {
+//     starwarsRepository.addListItem(character);
+//   });
+//   console.log(starwarsRepository.getAll().length) // checking the length of characters
+// });
+
+
+
+starwarsRepository.getStarWarsPlanets(starwarsRepository.progressCallback)
+  .then(planets => {
+    // all planets have been loaded
+    console.log(planets.map(p => p.name));
+    // starwarsRepository.getAll().forEach(function(character) {
+    //   starwarsRepository.addListItem(character);
+    // });
+  })
+  .catch(console.error);
