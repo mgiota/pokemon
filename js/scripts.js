@@ -4,7 +4,7 @@ var starwarsRepository = (function () {
 // Array with Star Wars Characters as Objects
   var characters = [];
 // API URL
-  var apiURL = 'https://swapi.co/api/people/?page=';
+  var apiURL = 'https://swapi.co/api/people/';
 // function to add characters
   function add(item) {
     characters.push(item);
